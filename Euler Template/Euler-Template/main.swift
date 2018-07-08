@@ -8,31 +8,31 @@
 
 import Foundation
 
-let stopWatch = Date()
 
-print("Hello, World!")
-print("Testing some stuff!")
-print("Some additional testing of stuff!")
+print() //Leading print to space out the output from the command-line
 
-let dateFormatter = DateFormatter()
-let time1 = Date()
+//Timing start. Brute force application timer to diagnose how fast this part of the app runs.
+let appStartTime = Date() //Application start time.
 
-dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" // set template after setting locale
-print(dateFormatter.string(from: time1)) // December 31
 
-let countTo = 300000
+//Do some stuff for the problem.
+let countTo = 10000000
+var someArray: [Int] = []
+someArray.append(0)
 
 for index in 1...countTo {
-    print("Some Index: \(index)")
+    //print("Some Index: \(index)")
+    someArray.append(index)
 }
 
-let time2 = Date()
-let time3 = DateInterval(start: time1, end: time2)
-
-print("Time 1: ", dateFormatter.string(from:time1))
-print("Time 2: ", dateFormatter.string(from:time2))
-// print("Time Diff: ", dateFormatter.string(from:(time3)))
-
-print("Date Interval: ", time3.description)
+//Stop doing stuff for the problem.
 
 
+//Timing wrap up - Figure out how long the application took to run and print it to the screen.
+let appFinishTime = Date() //Application finish time
+let diff = Float32(appFinishTime.timeIntervalSince1970 - appStartTime.timeIntervalSince1970) //This will be time in seconds.
+print("Time to Execute: ", diff, " seconds.")
+
+print()
+let randomPosition = Int(arc4random_uniform(UInt32(countTo)))
+print("Some Array Position: [", randomPosition, "] = ", someArray[randomPosition])
